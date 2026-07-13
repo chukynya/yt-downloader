@@ -5,9 +5,6 @@ or extract its audio as **MP3**. Paste any link — including playlist or radio
 URLs — and it automatically trims it down to the **single video** you asked for,
 then lets you pick the quality.
 
-> 🧑‍🏫 **New to this and don't code?** Follow the friendly, click-by-click guide:
-> **[chukynya.github.io/yt-downloader](https://chukynya.github.io/yt-downloader/)**
-
 ## Features
 
 - 🎬 **Video (MP4)** up to **8K (4320p)** — plus 4K, 1440p, 1080p, 720p and lower
@@ -175,7 +172,6 @@ Downloaded files are saved in the `downloads/` folder.
 | `ytdl_core.py` | Pure logic — URL cleaning, quality tables, format codes, environment checks. No yt-dlp, no console I/O, so it's easy to test. |
 | `main.py` | The interactive app — yt-dlp options, downloading, and the menu loop. |
 | `tests/test_core.py` | Unit tests for `ytdl_core` (no network, no yt-dlp needed). |
-| `docs/index.html` | The beginner's guide, published via GitHub Pages. |
 
 **Running the tests**
 
