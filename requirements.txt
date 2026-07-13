@@ -1,0 +1,8 @@
+# Python dependencies for the YouTube MP3 & MP4 downloader.
+# Install into the .env virtualenv with:  pip install -r requirements.txt
+#
+# Left unpinned on purpose: YouTube changes its site often and each yt-dlp
+# release keeps up with it, so you almost always want the latest version.
+# FFmpeg is NOT listed here — it is a system binary, installed separately
+# (see the README), not a pip package.
+yt-dlp

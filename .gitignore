@@ -1,1 +1,11 @@
+# Downloaded media
 downloads/
+
+# Virtual environments
+.env/
+venv/
+.venv/
+
+# Python bytecode / caches
+__pycache__/
+*.pyc
