@@ -1,0 +1,641 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="A friendly, no-code, step-by-step guide to installing and using the YouTube MP3 & MP4 downloader on Windows, Mac, or Linux.">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎬</text></svg>">
+<title>How to use the YouTube Downloader</title>
+<style>
+  :root {
+    --paper:   #FCFAF7;
+    --card:    #FFFFFF;
+    --ink:     #2B2622;
+    --muted:   #6E655B;
+    --line:    #ECE4DA;
+    --line-2:  #E0D6C9;
+    --accent:  #E4432C;
+    --accent-deep: #B9311F;
+    --accent-tint: #FBE9E4;
+    --amber:   #C9871A;
+    --amber-tint: #FBF0D9;
+    --green:   #2C8F63;
+    --green-tint: #E4F3EB;
+    --code-bg: #2C2622;
+    --code-ink:#F6EFE7;
+    --shadow:  0 1px 2px rgba(43,38,34,.05), 0 6px 20px rgba(43,38,34,.06);
+    --shadow-lift: 0 2px 4px rgba(43,38,34,.06), 0 12px 30px rgba(43,38,34,.10);
+    --radius: 16px;
+    --font-display: ui-rounded, "SF Pro Rounded", "Segoe UI", system-ui, -apple-system, "Helvetica Neue", sans-serif;
+    --font-body: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    --font-mono: ui-monospace, "Cascadia Code", "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --paper:   #191512;
+      --card:    #241E1A;
+      --ink:     #F2EAE0;
+      --muted:   #AC9F91;
+      --line:    #322A24;
+      --line-2:  #3D342C;
+      --accent:  #FF6A50;
+      --accent-deep: #FF9B87;
+      --accent-tint: #33211D;
+      --amber:   #F0B84A;
+      --amber-tint: #2E2413;
+      --green:   #57C08A;
+      --green-tint: #16281E;
+      --code-bg: #100D0B;
+      --code-ink:#F3EBE1;
+      --shadow:  0 1px 2px rgba(0,0,0,.30), 0 6px 20px rgba(0,0,0,.35);
+      --shadow-lift: 0 2px 4px rgba(0,0,0,.35), 0 14px 34px rgba(0,0,0,.45);
+    }
+  }
+  :root[data-theme="light"] {
+    --paper:#FCFAF7; --card:#FFFFFF; --ink:#2B2622; --muted:#6E655B; --line:#ECE4DA; --line-2:#E0D6C9;
+    --accent:#E4432C; --accent-deep:#B9311F; --accent-tint:#FBE9E4; --amber:#C9871A; --amber-tint:#FBF0D9;
+    --green:#2C8F63; --green-tint:#E4F3EB; --code-bg:#2C2622; --code-ink:#F6EFE7;
+    --shadow:0 1px 2px rgba(43,38,34,.05),0 6px 20px rgba(43,38,34,.06);
+    --shadow-lift:0 2px 4px rgba(43,38,34,.06),0 12px 30px rgba(43,38,34,.10);
+  }
+  :root[data-theme="dark"] {
+    --paper:#191512; --card:#241E1A; --ink:#F2EAE0; --muted:#AC9F91; --line:#322A24; --line-2:#3D342C;
+    --accent:#FF6A50; --accent-deep:#FF9B87; --accent-tint:#33211D; --amber:#F0B84A; --amber-tint:#2E2413;
+    --green:#57C08A; --green-tint:#16281E; --code-bg:#100D0B; --code-ink:#F3EBE1;
+    --shadow:0 1px 2px rgba(0,0,0,.30),0 6px 20px rgba(0,0,0,.35);
+    --shadow-lift:0 2px 4px rgba(0,0,0,.35),0 14px 34px rgba(0,0,0,.45);
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--font-body);
+    font-size: 17px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 780px; margin: 0 auto; padding: 0 22px; }
+  p { margin: 0 0 0.9em; }
+  a { color: var(--accent-deep); text-decoration-thickness: 1.5px; text-underline-offset: 2px; }
+
+  /* ---------- Hero ---------- */
+  header.hero {
+    padding: 60px 0 30px;
+    text-align: center;
+  }
+  .badge-play {
+    width: 62px; height: 62px; border-radius: 18px;
+    background: var(--accent);
+    display: inline-flex; align-items: center; justify-content: center;
+    box-shadow: 0 6px 18px color-mix(in srgb, var(--accent) 40%, transparent);
+    margin-bottom: 20px;
+  }
+  .badge-play svg { width: 26px; height: 26px; display: block; margin-left: 3px; }
+  .eyebrow {
+    font-size: 0.78rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--accent-deep); margin-bottom: 14px;
+  }
+  h1 {
+    font-family: var(--font-display);
+    font-size: clamp(2.05rem, 6vw, 3rem);
+    line-height: 1.08; letter-spacing: -0.02em; font-weight: 800;
+    margin: 0 0 16px; text-wrap: balance;
+  }
+  .lede {
+    font-size: 1.15rem; color: var(--muted); max-width: 34ch;
+    margin: 0 auto; text-wrap: balance;
+  }
+
+  /* ---------- OS switcher ---------- */
+  .os-switch {
+    position: sticky; top: 0; z-index: 20;
+    background: color-mix(in srgb, var(--paper) 88%, transparent);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--line);
+    padding: 12px 0; margin-top: 26px;
+  }
+  .os-switch .wrap { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+  .os-switch .label { font-size: 0.82rem; font-weight: 700; color: var(--muted); margin-right: 2px; }
+  .os-tabs { display: flex; gap: 8px; flex: 1; flex-wrap: wrap; }
+  .os-tab {
+    font-family: var(--font-body); font-size: 0.95rem; font-weight: 650;
+    color: var(--ink); background: var(--card);
+    border: 1.5px solid var(--line-2); border-radius: 999px;
+    padding: 8px 18px; cursor: pointer; display: inline-flex; align-items: center; gap: 7px;
+    transition: transform .12s ease, border-color .12s ease, background .12s ease, color .12s ease;
+  }
+  .os-tab:hover { transform: translateY(-1px); border-color: var(--accent); }
+  .os-tab[aria-pressed="true"] {
+    background: var(--accent); border-color: var(--accent); color: #fff;
+    box-shadow: 0 4px 12px color-mix(in srgb, var(--accent) 34%, transparent);
+  }
+  .os-tab .dot { font-size: 1.05em; line-height: 1; }
+
+  /* ---------- Section headings ---------- */
+  section.block { padding: 40px 0 8px; }
+  .sec-head { margin-bottom: 10px; }
+  .sec-kicker {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 0.76rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--accent-deep); margin-bottom: 8px;
+  }
+  .sec-kicker .pill {
+    background: var(--accent-tint); color: var(--accent-deep);
+    padding: 2px 9px; border-radius: 999px; letter-spacing: 0.04em;
+  }
+  h2 {
+    font-family: var(--font-display); font-size: 1.7rem; font-weight: 800;
+    letter-spacing: -0.015em; margin: 0 0 6px; text-wrap: balance;
+  }
+  .sec-note { color: var(--muted); margin: 0 0 22px; font-size: 1.02rem; }
+
+  /* ---------- Steps ---------- */
+  .steps { display: flex; flex-direction: column; gap: 16px; }
+  .step {
+    background: var(--card); border: 1px solid var(--line);
+    border-radius: var(--radius); padding: 22px 24px 20px;
+    box-shadow: var(--shadow);
+    display: grid; grid-template-columns: 44px 1fr; gap: 18px;
+  }
+  .step-num {
+    width: 40px; height: 40px; border-radius: 12px;
+    background: var(--ink); color: var(--paper);
+    font-family: var(--font-display); font-weight: 800; font-size: 1.15rem;
+    display: flex; align-items: center; justify-content: center;
+  }
+  section.run .step-num { background: var(--accent); color: #fff; }
+  .step-body { min-width: 0; }
+  .step-body h3 {
+    font-family: var(--font-display); font-size: 1.18rem; font-weight: 750;
+    margin: 6px 0 8px; letter-spacing: -0.01em;
+  }
+  .step-body p:last-child { margin-bottom: 0; }
+  .step-body ul { margin: 4px 0 10px; padding-left: 20px; }
+  .step-body li { margin-bottom: 5px; }
+  strong { font-weight: 700; }
+
+  /* ---------- Command block ---------- */
+  .cmd {
+    background: var(--code-bg); border-radius: 12px;
+    margin: 12px 0 6px; overflow: hidden;
+    display: flex; align-items: stretch;
+  }
+  .cmd-scroll { flex: 1; overflow-x: auto; padding: 13px 4px 13px 16px; }
+  .cmd code {
+    font-family: var(--font-mono); font-size: 0.9rem; line-height: 1.5;
+    color: var(--code-ink); white-space: pre; display: none;
+  }
+  .cmd .caret { color: var(--accent-deep); user-select: none; }
+  .sys-win  .cmd code.os-win,
+  .sys-mac  .cmd code.os-mac,
+  .sys-linux .cmd code.os-linux { display: inline; }
+  .copy {
+    flex-shrink: 0; align-self: stretch;
+    border: none; border-left: 1px solid rgba(255,255,255,.10);
+    background: transparent; color: var(--code-ink);
+    font-family: var(--font-body); font-size: 0.82rem; font-weight: 650;
+    padding: 0 16px; cursor: pointer; min-width: 84px;
+    transition: background .12s ease, color .12s ease;
+  }
+  .copy:hover { background: rgba(255,255,255,.09); }
+  .copy.done { color: #7BE0A6; }
+  .cmd-hint { font-size: 0.86rem; color: var(--muted); margin: 4px 0 0; }
+
+  /* OS-specific prose */
+  .os-only { display: none; }
+  .sys-win  .os-only.os-win,
+  .sys-mac  .os-only.os-mac,
+  .sys-linux .os-only.os-linux { display: block; }
+
+  /* OS-specific text that stays inline within a sentence */
+  .os-inline { display: none; }
+  .sys-win  .os-inline.os-win,
+  .sys-mac  .os-inline.os-mac,
+  .sys-linux .os-inline.os-linux { display: inline; }
+
+  :where(a, button, summary, .os-tab, .copy):focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+    border-radius: 6px;
+  }
+
+  /* ---------- Callouts ---------- */
+  .callout {
+    display: flex; gap: 11px; align-items: flex-start;
+    border-radius: 12px; padding: 13px 16px; margin: 12px 0;
+    font-size: 0.97rem; line-height: 1.55;
+  }
+  .callout .ico { flex-shrink: 0; font-size: 1.1rem; line-height: 1.4; }
+  .callout.important { background: var(--amber-tint); border: 1px solid color-mix(in srgb, var(--amber) 40%, transparent); }
+  .callout.tip { background: var(--green-tint); border: 1px solid color-mix(in srgb, var(--green) 35%, transparent); }
+  .callout p { margin: 0; }
+  .callout strong { color: var(--ink); }
+
+  /* ---------- Choices (using the app) ---------- */
+  .choices { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 6px 0 4px; }
+  .choice {
+    background: var(--card); border: 1px solid var(--line); border-radius: 14px;
+    padding: 18px 18px 16px; box-shadow: var(--shadow);
+  }
+  .choice .emoji { font-size: 1.5rem; }
+  .choice h4 { font-family: var(--font-display); font-size: 1.08rem; margin: 8px 0 4px; font-weight: 750; }
+  .choice p { margin: 0; color: var(--muted); font-size: 0.95rem; }
+  .choice .tag {
+    display: inline-block; margin-top: 10px; font-size: 0.76rem; font-weight: 700;
+    letter-spacing: 0.03em; padding: 3px 10px; border-radius: 999px;
+    background: var(--accent-tint); color: var(--accent-deep);
+  }
+
+  /* ---------- FAQ ---------- */
+  .faq { display: flex; flex-direction: column; gap: 10px; }
+  details.q {
+    background: var(--card); border: 1px solid var(--line); border-radius: 12px;
+    padding: 2px 18px; box-shadow: var(--shadow);
+  }
+  details.q summary {
+    cursor: pointer; list-style: none; padding: 15px 0; font-weight: 650;
+    display: flex; align-items: center; gap: 12px; font-size: 1.02rem;
+  }
+  details.q summary::-webkit-details-marker { display: none; }
+  details.q summary .chev {
+    margin-left: auto; transition: transform .18s ease; color: var(--muted); flex-shrink: 0;
+  }
+  details.q[open] summary .chev { transform: rotate(90deg); }
+  details.q .ans { padding: 0 0 16px 32px; color: var(--muted); }
+  details.q .ans code {
+    font-family: var(--font-mono); font-size: 0.86em;
+    background: var(--code-bg); color: var(--code-ink);
+    padding: 2px 6px; border-radius: 5px; white-space: pre-wrap;
+  }
+  details.q .ans a { color: var(--accent-deep); }
+
+  /* ---------- Footer ---------- */
+  footer {
+    text-align: center; color: var(--muted); font-size: 0.9rem;
+    padding: 44px 0 56px; margin-top: 34px; border-top: 1px solid var(--line);
+  }
+  footer .made { margin-top: 6px; font-size: 0.84rem; }
+
+  hr.soft { border: none; border-top: 1px solid var(--line); margin: 40px 0 0; }
+
+  @media (max-width: 560px) {
+    body { font-size: 16px; }
+    .step { grid-template-columns: 36px 1fr; gap: 14px; padding: 18px 18px 16px; }
+    .step-num { width: 34px; height: 34px; border-radius: 10px; font-size: 1rem; }
+    .choices { grid-template-columns: 1fr; }
+    .os-switch .label { display: none; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; }
+  }
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="wrap">
+    <span class="badge-play" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="#fff"><path d="M6 4.5v15a1 1 0 0 0 1.54.84l11.5-7.5a1 1 0 0 0 0-1.68L7.54 3.66A1 1 0 0 0 6 4.5Z"/></svg>
+    </span>
+    <div class="eyebrow">No coding needed</div>
+    <h1>Save YouTube videos &amp; music onto your computer</h1>
+    <p class="lede">Follow the steps below. We walk you through every click — you can do this.</p>
+  </div>
+</header>
+
+<div class="os-switch">
+  <div class="wrap">
+    <span class="label">Your computer:</span>
+    <div class="os-tabs" role="group" aria-label="Choose your operating system">
+      <button class="os-tab" data-os="win"   type="button"><span class="dot">🪟</span> Windows</button>
+      <button class="os-tab" data-os="mac"   type="button"><span class="dot">🍎</span> Mac</button>
+      <button class="os-tab" data-os="linux" type="button"><span class="dot">🐧</span> Linux</button>
+    </div>
+  </div>
+</div>
+
+<main>
+  <!-- ============ SET UP ONCE ============ -->
+  <section class="block setup">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="sec-kicker"><span class="pill">Part 1</span> Set it up · you only do this once</div>
+        <h2>Get everything ready</h2>
+        <p class="sec-note">This part takes about 10 minutes. Once it's done, you never have to do it again — downloading later takes seconds.</p>
+      </div>
+
+      <div class="steps">
+
+        <!-- Step 1 -->
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-body">
+            <h3>Install Python</h3>
+            <p>Python is the free program that runs the downloader. You install it once.</p>
+            <div class="os-only os-win">
+              <p>Go to <a href="https://www.python.org/downloads/" target="_blank" rel="noopener">python.org/downloads</a> and click the big yellow <strong>Download Python</strong> button. Open the file you downloaded.</p>
+              <div class="callout important">
+                <span class="ico">⚠️</span>
+                <p>On the first install screen, tick the box <strong>“Add python.exe to PATH”</strong> at the bottom <em>before</em> clicking Install. This one checkbox saves a lot of trouble later.</p>
+              </div>
+            </div>
+            <div class="os-only os-mac">
+              <p>Go to <a href="https://www.python.org/downloads/" target="_blank" rel="noopener">python.org/downloads</a>, click <strong>Download Python</strong>, open the downloaded <code>.pkg</code> file, and click through the installer.</p>
+            </div>
+            <div class="os-only os-linux">
+              <p>Most Linux systems already have Python. If not, install it with your package manager — for example <strong>Fedora:</strong> <code>sudo dnf install python3</code>, or <strong>Ubuntu/Debian:</strong> <code>sudo apt install python3 python3-venv</code>.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-body">
+            <h3>Install FFmpeg <span style="font-weight:600;color:var(--muted);font-size:.9rem;">(strongly recommended)</span></h3>
+            <p>FFmpeg is a helper that makes proper <strong>MP3 music files</strong> and unlocks higher-quality video. The downloader still runs without it, but audio comes out as a <code>.m4a</code> file instead of <code>.mp3</code>.</p>
+            <div class="os-only os-win">
+              <p>The easiest way is to open the black command window (you'll learn how in Step 4) and paste this one line:</p>
+              <div class="cmd">
+                <div class="cmd-scroll"><code class="os os-win"><span class="caret">&gt; </span>winget install Gyan.FFmpeg</code></div>
+                <button class="copy" type="button">Copy</button>
+              </div>
+              <p class="cmd-hint">Prefer not to use a command? You can skip FFmpeg for now and add it later.</p>
+            </div>
+            <div class="os-only os-mac">
+              <p>Mac installs FFmpeg through <strong>Homebrew</strong>. If you don't have Homebrew, install it first from <a href="https://brew.sh" target="_blank" rel="noopener">brew.sh</a>, then run:</p>
+              <div class="cmd">
+                <div class="cmd-scroll"><code class="os os-mac"><span class="caret">$ </span>brew install ffmpeg</code></div>
+                <button class="copy" type="button">Copy</button>
+              </div>
+            </div>
+            <div class="os-only os-linux">
+              <p><strong>Fedora:</strong> enable RPM Fusion first (FFmpeg lives there), then install:</p>
+              <div class="cmd">
+                <div class="cmd-scroll"><code class="os os-linux"><span class="caret">$ </span>sudo dnf install ffmpeg</code></div>
+                <button class="copy" type="button">Copy</button>
+              </div>
+              <p class="cmd-hint"><strong>Ubuntu/Debian:</strong> <code>sudo apt install ffmpeg</code></p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="step">
+          <div class="step-num">3</div>
+          <div class="step-body">
+            <h3>Download the app’s files</h3>
+            <p>Go to the project page: <a href="https://github.com/chukynya/yt-downloader" target="_blank" rel="noopener">github.com/chukynya/yt-downloader</a>.</p>
+            <ul>
+              <li>Click the green <strong>&lt;&gt; Code</strong> button.</li>
+              <li>Choose <strong>Download ZIP</strong>.</li>
+              <li>Find the ZIP in your <strong>Downloads</strong> folder and <strong>unzip</strong> it (right-click → Extract).</li>
+            </ul>
+            <p>You'll get a folder called <strong>yt-downloader</strong>. Remember where it is — you'll open it in the next step.</p>
+          </div>
+        </div>
+
+        <!-- Step 4 -->
+        <div class="step">
+          <div class="step-num">4</div>
+          <div class="step-body">
+            <h3>Open the command window <em>inside</em> that folder</h3>
+            <p>This is the “black window” where you type simple commands. Opening it from inside the folder matters.</p>
+            <div class="os-only os-win">
+              <ul>
+                <li>Open the <strong>yt-downloader</strong> folder in File Explorer.</li>
+                <li>Click once in the <strong>address bar</strong> at the top (where the folder path is shown).</li>
+                <li>Type <strong>cmd</strong> and press <strong>Enter</strong>.</li>
+              </ul>
+              <p>A black window opens, already pointing at your folder. 🎉</p>
+            </div>
+            <div class="os-only os-mac">
+              <ul>
+                <li>Open the <strong>Terminal</strong> app (press <strong>⌘ + Space</strong>, type “Terminal”, press Enter).</li>
+                <li>Type <code>cd </code> (the letters c-d and a space), then <strong>drag the yt-downloader folder</strong> onto the Terminal window and press <strong>Enter</strong>.</li>
+              </ul>
+            </div>
+            <div class="os-only os-linux">
+              <ul>
+                <li>Open your file manager and go into the <strong>yt-downloader</strong> folder.</li>
+                <li>Right-click an empty area and choose <strong>“Open Terminal Here”</strong> (the wording varies by system).</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 5 -->
+        <div class="step">
+          <div class="step-num">5</div>
+          <div class="step-body">
+            <h3>Install the app’s parts</h3>
+            <p>In that window, copy the line below, paste it, and press <strong>Enter</strong>. It sets up a tidy private workspace and downloads what the app needs. Wait until it finishes.</p>
+            <div class="cmd">
+              <div class="cmd-scroll"><code class="os os-win"><span class="caret">&gt; </span>python -m venv .env &amp;&amp; .\.env\Scripts\python.exe -m pip install -r requirements.txt</code><code class="os os-mac os-linux"><span class="caret">$ </span>python3 -m venv .env &amp;&amp; .env/bin/python -m pip install -r requirements.txt</code></div>
+              <button class="copy" type="button">Copy</button>
+            </div>
+            <div class="callout tip">
+              <span class="ico">📋</span>
+              <p>To paste into the black window: <strong class="os-inline os-win">right-click</strong><strong class="os-inline os-mac">press ⌘ + V</strong><strong class="os-inline os-linux">press Ctrl + Shift + V</strong>. Then press Enter and let it run — it may take a minute.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <hr class="soft" />
+
+  <!-- ============ EVERY TIME ============ -->
+  <section class="block run">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="sec-kicker"><span class="pill">Part 2</span> Download something · every time</div>
+        <h2>Grab a video or a song</h2>
+        <p class="sec-note">Setup done! From now on, this is all you do — about 30 seconds.</p>
+      </div>
+
+      <div class="steps">
+
+        <!-- Run 1 -->
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-body">
+            <h3>Start the downloader</h3>
+            <p>Open the command window inside the <strong>yt-downloader</strong> folder again (same as Step 4 above), then paste this and press <strong>Enter</strong>:</p>
+            <div class="cmd">
+              <div class="cmd-scroll"><code class="os os-win"><span class="caret">&gt; </span>.\.env\Scripts\python.exe main.py</code><code class="os os-mac os-linux"><span class="caret">$ </span>.env/bin/python main.py</code></div>
+              <button class="copy" type="button">Copy</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Run 2 -->
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-body">
+            <h3>Paste the YouTube link</h3>
+            <p>Copy the web address of the YouTube video from your browser, paste it into the window, and press <strong>Enter</strong>.</p>
+            <div class="callout tip">
+              <span class="ico">✂️</span>
+              <p>Pasted a playlist or “radio mix” link with lots of extra text? No problem — the app automatically trims it down and grabs <strong>only the one video you're watching</strong>.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Run 3 -->
+        <div class="step">
+          <div class="step-num">3</div>
+          <div class="step-body">
+            <h3>Choose what you want</h3>
+            <p>The app asks a couple of simple questions. Type the number and press Enter — or just press <strong>Enter</strong> on its own to accept the <strong>recommended</strong> choice.</p>
+            <div class="choices">
+              <div class="choice">
+                <div class="emoji">🎬</div>
+                <h4>Video (MP4)</h4>
+                <p>The full video with picture and sound. Recommended quality is 1080p (Full HD).</p>
+                <span class="tag">Type 1</span>
+              </div>
+              <div class="choice">
+                <div class="emoji">🎵</div>
+                <h4>Music (MP3)</h4>
+                <p>Just the audio, as a music file. Recommended quality is 320&nbsp;kbps (the best MP3 can do).</p>
+                <span class="tag">Type 2</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Run 4 -->
+        <div class="step">
+          <div class="step-num">4</div>
+          <div class="step-body">
+            <h3>Find your file</h3>
+            <p>When it says <strong>“completed successfully”</strong>, you're done. Your video or song is waiting in a folder named <strong>downloads</strong>, right inside the yt-downloader folder. Enjoy! 🎉</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <hr class="soft" />
+
+  <!-- ============ TROUBLESHOOTING ============ -->
+  <section class="block">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="sec-kicker">Stuck?</div>
+        <h2>If something goes wrong</h2>
+        <p class="sec-note">The most common little bumps and how to fix them. Tap a question to open it.</p>
+      </div>
+
+      <div class="faq">
+        <details class="q">
+          <summary>It says <span style="color:var(--accent-deep)">“python is not recognized”</span> <span class="chev">›</span></summary>
+          <div class="ans">
+            <p><strong>Windows:</strong> Python was installed without the PATH box ticked. Re-run the Python installer, choose “Modify”, and make sure <strong>“Add python.exe to PATH”</strong> is on — or simply reinstall and tick it (Step 1).</p>
+            <p><strong>Mac / Linux:</strong> use <code>python3</code> instead of <code>python</code>.</p>
+          </div>
+        </details>
+        <details class="q">
+          <summary>My music saved as <span style="color:var(--accent-deep)">.m4a</span>, not .mp3 <span class="chev">›</span></summary>
+          <div class="ans">
+            <p>That means FFmpeg isn't installed yet. Do <strong>Step 2</strong>, then run the download again and you'll get a proper <code>.mp3</code>.</p>
+          </div>
+        </details>
+        <details class="q">
+          <summary>It says the video is unavailable or shows an error <span class="chev">›</span></summary>
+          <div class="ans">
+            <p>YouTube changes often. Update the app's engine by opening the command window in the folder and pasting:</p>
+            <p><code class="os-inline os-win">.\.env\Scripts\python.exe -m pip install -U yt-dlp</code><code class="os-inline os-mac os-linux">.env/bin/python -m pip install -U yt-dlp</code></p>
+          </div>
+        </details>
+        <details class="q">
+          <summary>The window flashes and closes, or nothing happens <span class="chev">›</span></summary>
+          <div class="ans">
+            <p>Make sure you opened the command window <strong>inside</strong> the yt-downloader folder (Step 4). If you're not sure, close it and do Step 4 again before running the start command.</p>
+          </div>
+        </details>
+        <details class="q">
+          <summary>Is any of this illegal or unsafe? <span class="chev">›</span></summary>
+          <div class="ans">
+            <p>The tool itself is a normal open-source program. Please only download content you have the right to — your own videos, royalty-free material, or where the creator allows it — and respect YouTube's Terms of Service.</p>
+          </div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      <div>YouTube MP3 &amp; MP4 Downloader — beginner's guide</div>
+      <div class="made">Works on Windows, Mac &amp; Linux · Files save to the <strong>downloads</strong> folder</div>
+    </div>
+  </footer>
+</main>
+
+<script>
+  (function () {
+    var root = document.documentElement;
+    var tabs = Array.prototype.slice.call(document.querySelectorAll('.os-tab'));
+
+    function setOS(os) {
+      root.classList.remove('sys-win', 'sys-mac', 'sys-linux');
+      root.classList.add('sys-' + os);
+      tabs.forEach(function (t) {
+        t.setAttribute('aria-pressed', t.getAttribute('data-os') === os ? 'true' : 'false');
+      });
+    }
+
+    // Best-guess the visitor's system, default to Windows.
+    function detect() {
+      var s = (navigator.userAgent + ' ' + (navigator.platform || '')).toLowerCase();
+      if (s.indexOf('win') !== -1) return 'win';
+      if (s.indexOf('mac') !== -1 || s.indexOf('iphone') !== -1 || s.indexOf('ipad') !== -1) return 'mac';
+      if (s.indexOf('linux') !== -1 || s.indexOf('x11') !== -1 || s.indexOf('android') !== -1) return 'linux';
+      return 'win';
+    }
+
+    tabs.forEach(function (t) {
+      t.addEventListener('click', function () { setOS(t.getAttribute('data-os')); });
+    });
+    setOS(detect());
+
+    // Copy buttons — copy whichever command line is currently visible.
+    document.querySelectorAll('.cmd .copy').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var block = btn.closest('.cmd');
+        var codes = Array.prototype.slice.call(block.querySelectorAll('code.os'));
+        var visible = codes.find(function (c) { return c.offsetParent !== null; }) || codes[0];
+        if (!visible) return;
+        // Strip the leading prompt symbol ("> " or "$ ") before copying.
+        var text = visible.textContent.replace(/^[>$]\s+/, '');
+        var done = function () {
+          var old = btn.textContent;
+          btn.textContent = 'Copied!';
+          btn.classList.add('done');
+          setTimeout(function () { btn.textContent = old; btn.classList.remove('done'); }, 1600);
+        };
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(text).then(done, function () { fallback(text, done); });
+        } else {
+          fallback(text, done);
+        }
+      });
+    });
+
+    function fallback(text, done) {
+      var ta = document.createElement('textarea');
+      ta.value = text; ta.style.position = 'fixed'; ta.style.opacity = '0';
+      document.body.appendChild(ta); ta.select();
+      try { document.execCommand('copy'); done(); } catch (e) {}
+      document.body.removeChild(ta);
+    }
+  })();
+</script>
+</body>
+</html>
