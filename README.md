@@ -161,6 +161,31 @@ Downloaded files are saved in the `downloads/` folder.
 - Supported link forms: `youtube.com/watch`, `youtu.be/…`, `/shorts/…`,
   `/live/…`, `/embed/…`.
 
+---
+
+## For developers
+
+**Project layout**
+
+| File | What it holds |
+| --- | --- |
+| `ytdl_core.py` | Pure logic — URL cleaning, quality tables, format codes, environment checks. No yt-dlp, no console I/O, so it's easy to test. |
+| `main.py` | The interactive app — yt-dlp options, downloading, and the menu loop. |
+| `tests/test_core.py` | Unit tests for `ytdl_core` (no network, no yt-dlp needed). |
+| `docs/index.html` | The beginner's guide, published via GitHub Pages. |
+
+**Running the tests**
+
+```bash
+python -m unittest discover -s tests -t .
+# or simply:
+python tests/test_core.py
+```
+
+The quality menus are data-driven: edit a row in `VIDEO_QUALITIES` /
+`AUDIO_QUALITIES` in `ytdl_core.py` and both the on-screen menu and the yt-dlp
+format string update together.
+
 ## License
 
 MIT License — see [LICENSE](LICENSE).
