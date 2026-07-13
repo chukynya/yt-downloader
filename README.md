@@ -5,6 +5,9 @@ or extract its audio as **MP3**. Paste any link — including playlist or radio
 URLs — and it automatically trims it down to the **single video** you asked for,
 then lets you pick the quality.
 
+> 🧑‍🏫 **New to this and don't code?** Follow the friendly, click-by-click guide:
+> **[chukynya.github.io/yt-downloader](https://chukynya.github.io/yt-downloader/)**
+
 ## Features
 
 - 🎬 **Video (MP4)** up to **8K (4320p)** — plus 4K, 1440p, 1080p, 720p and lower
